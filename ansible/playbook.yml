@@ -1,0 +1,13 @@
+---
+- name: Provision and Deploy Node.js App
+  hosts: webservers
+  tasks:
+    - name: Install npm dependencies
+      command: npm install
+      args:
+        chdir: "{{ playbook_dir }}/.."
+
+    - name: Run test suite via Ansible
+      command: npm test
+      args:
+        chdir: "{{ playbook_dir }}/.."
